@@ -1,0 +1,5 @@
+.venv
+/datasets
+/testing
+/testing2
+__pycache__
