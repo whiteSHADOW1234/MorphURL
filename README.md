@@ -18,7 +18,7 @@ MorphURL requires Python 3.7 or higher.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/MorphURL.git  # Replace with your repository URL
+   git clone https://github.com/whiteSHADOW1234/MorphURL.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -26,7 +26,7 @@ MorphURL requires Python 3.7 or higher.
    ```
 3. Install the required packages:
    ```bash
-   pip install -r requirements.txt  # Create a requirements.txt with 'click' and 'ipaddress'
+   pip install -r requirements.txt
    ```
 
 ## Usage
