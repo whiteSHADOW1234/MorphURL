@@ -72,8 +72,8 @@ Select an option below to get started:
     Reverse the obfuscation to recover the original IP or URL.
 
 Examples:
-    python main.py --option 1 --ip_or_url http://example.com
-    python main.py --option 2 --file obfuscated_urls.txt --output deobfuscated_results.txt
+    python main.py -op 1 -i http://example.com
+    python main.py -op 2 -f obfuscated_urls.txt -o deobfuscated_results.txt
 
     """)
             while True:
