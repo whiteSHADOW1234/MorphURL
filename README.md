@@ -30,53 +30,55 @@ MorphURL requires Python 3.7 or higher.
    ```
 
 ## Usage
+MorphURL can be used in two ways:
 
-### Obfuscate
+### 1. Command-Line Interface (CLI)
 
-```bash
-python cli.py obfuscate <ip_or_url> [-c <count>] [-o <output_file>] [-d <domains_file>]  # Single IP/URL
-python cli.py obfuscate -f <input_file> [-c <count>] [-o <output_file>] [-d <domains_file>]  # From file
-```
-
-*   `<ip_or_url>`: The IP address or URL to obfuscate.
-*   `-f <input_file>`: Path to a file containing IPs/URLs (one per line).
-*   `-c <count>`: Number of obfuscated variations to generate (default: 5).
-*   `-o <output_file>`: Path to the output file to save results.
-*   `-d <domains_file>`: Path to a file containing domains for URL masking (one per line).
-
-
-### Deobfuscate
+You can use the tool directly from the command line with the following syntax:
 
 ```bash
-python cli.py deobfuscate <ip_or_url> [-o <output_file>] # Single IP/URL
-python cli.py deobfuscate -f <input_file> [-o <output_file>] # From file
-
+python main.py --option <option_number> [--ip_or_url <ip_or_url>] [-f <input_file>] [--output <output_file>] [-c <count>] [-d <domains_file>]
 ```
 
-*   `<ip_or_url>`: The IP address or URL to deobfuscate.
-*   `-f <input_file>`: Path to a file containing obfuscated IPs/URLs (one per line).
-*   `-o <output_file>`: Path to the output file to save results.
+*   `--option <option_number>` or `-op <option_number>`: Select the operation mode. Use `1` for obfuscation or `2` for deobfuscation. If no options are specified, the tool will start in interactive mode.
 
+*   `--ip_or_url <ip_or_url>` or `-i <ip_or_url>`: The IP address or URL to process directly. If using a file, this parameter is used to specify the file path. Please include protocol (e.g. http://, https://) if you want to obfuscate IPs.
 
-## Examples
+*   `-f <input_file>`: Path to a file containing IPs/URLs (one per line). This can be used instead of the `--ip_or_url` option for batch processing.
+
+*   `--output <output_file>` or `-o <output_file>`: Path to the output file to save results.
+
+*   `-c <count>`: Number of obfuscated variations to generate (default: 5). This is only used with obfuscation.
+
+*   `--domains <domains_file>` or `-d <domains_file>`: Path to a file containing domains for URL masking (one per line), or the domain itself. This is only used with obfuscation.
+
+### 2. Interactive Mode
+
+If you run the tool without any command-line options, it will start in interactive mode and guide you through the process:
+
+```bash
+python main.py
+```
+
+The tool will prompt you to select the desired operation (obfuscate or deobfuscate) and provide necessary input.
+
+## CLI Examples
 
 **Obfuscate:**
 
 ```bash
-python cli.py obfuscate 192.168.1.1
-python cli.py obfuscate http://example.com -c 3 -o obfuscated.txt
-python cli.py obfuscate -f input.txt -d domains.txt -o output.txt
+python main.py --option 1 --ip_or_url http://example.com
+python main.py --option 1 --ip_or_url http://example.com -c 3 -out obfuscated.txt
+python main.py --option 1 -f input.txt -d domains.txt --output output.txt
 ```
 
 **Deobfuscate:**
 
 ```bash
-python cli.py deobfuscate 0x7f000001
-python cli.py deobfuscate "http://example.com@192.168.0.1" -o deobfuscated.txt
-python cli.py deobfuscate -f obfuscated.txt -o deobfuscated_ips.txt
-
+python main.py --option 2 --ip_or_url 0x7f000001
+python main.py --option 2 --ip_or_url "http://example.com@192.168.0.1" --output deobfuscated.txt
+python main.py --option 2 -f obfuscated.txt --output deobfuscated_ips.txt
 ```
-
 
 ## Contributing
 
