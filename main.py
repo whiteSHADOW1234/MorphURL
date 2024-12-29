@@ -129,11 +129,11 @@ def process_obfuscation(ip_or_url, count, domains, output, file = None):
 
     domain_list = []
     if domains:
-        if  isinstance(domains, str):
-             domain_list = [domains]
-        else:
+        try:
             with open(domains, 'r') as f:
-                domain_list = [line.strip() for line in f]
+                domain_list = [line.strip() for line in f] 
+        except FileNotFoundError:
+            domain_list = [domains]
 
     results = []
     for item in inputs:
@@ -207,7 +207,7 @@ def process_deobfuscation(ip_or_url, output, file = None):
             if output:
                 results.append(f"{deobfuscated}")
             else:
-                print(f"Original: {item}, Deobfuscated: {deobfuscated}")
+                print(f"Decoded: {item}, Deobfuscated: {deobfuscated}")
 
         if output:
             with open(output, 'w', encoding="utf8") as outfile:

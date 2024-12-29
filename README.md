@@ -11,6 +11,9 @@ MorphURL is a versatile command-line tool designed for obfuscating and deobfusca
 * **Easy-to-Use CLI:**  Intuitive command-line interface with clear options and helpful messages.
 * **Cross-Platform Compatibility:** Works seamlessly on various operating systems.
 
+> [!IMPORTANT]
+> Please include protocol (e.g. `http://`, `https://`) if you want to obfuscate URLs & IPs.**
+
 
 ## Installation
 1. With Docker (Recommended)
@@ -55,7 +58,7 @@ python main.py --option <option_number> [--ip_or_url <ip_or_url>] [-f <input_fil
 
 *   `--option <option_number>` or `-op <option_number>`: Select the operation mode. Use `1` for obfuscation or `2` for deobfuscation. If no options are specified, the tool will start in interactive mode.
 
-*   `--ip_or_url <ip_or_url>` or `-i <ip_or_url>`: The IP address or URL to process directly. If using a file, this parameter is used to specify the file path. Please include protocol (e.g. http://, https://) if you want to obfuscate IPs.
+*   `--ip_or_url <ip_or_url>` or `-i <ip_or_url>`: The IP address or URL to process directly. If using a file, this parameter is used to specify the file path.
 
 *   `-f <input_file>`: Path to a file containing IPs/URLs (one per line). This can be used instead of the `--ip_or_url` option for batch processing.
 
