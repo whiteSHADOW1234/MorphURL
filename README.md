@@ -43,7 +43,7 @@ MorphURL is a versatile command-line tool designed for obfuscating and deobfusca
       ```
 
 ## Usage
-MorphURL can be used in two ways:
+MorphURL can be used in multiple ways:
 
 ### 1. Command-Line Interface (CLI)
 
@@ -74,6 +74,13 @@ python main.py
 ```
 
 The tool will prompt you to select the desired operation (obfuscate or deobfuscate) and provide necessary input.
+
+### 3. Docker Mode
+For the usage of Docker, you can execute the following commands to use either **Interactive** or **CLI Mode**.
+```
+docker run -it morphurl    # Interactive Mode
+docker run morphurl --help # CLI Mode
+```
 
 ## CLI Examples
 
