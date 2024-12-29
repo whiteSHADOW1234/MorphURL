@@ -12,22 +12,35 @@ MorphURL is a versatile command-line tool designed for obfuscating and deobfusca
 * **Cross-Platform Compatibility:** Works seamlessly on various operating systems.
 
 
-## Installation
+## Installation & Execution
+1. With Docker (Recommended)
+   1. Clone the repository:
+      ```bash
+      git clone https://github.com/whiteSHADOW1234/MorphURL.git
+      ```
+   2. Navigate to the project directory:
+      ```bash
+      cd MorphURL
+      ```
+   3. Install the required packages:
+      ```bash
+      docker build -t morphurl .
+      ```   
 
-MorphURL requires Python 3.7 or higher.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/whiteSHADOW1234/MorphURL.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd MorphURL
-   ```
-3. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Without Docker
+   1. Clone the repository:
+      ```bash
+      git clone https://github.com/whiteSHADOW1234/MorphURL.git
+      ```
+   2. Navigate to the project directory:
+      ```bash
+      cd MorphURL
+      ```
+   3. Install the required packages:
+      ```bash
+      pip install -r requirements.txt
+      ```
 
 ## Usage
 MorphURL can be used in two ways:
