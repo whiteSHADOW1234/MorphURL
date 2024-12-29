@@ -12,7 +12,7 @@ MorphURL is a versatile command-line tool designed for obfuscating and deobfusca
 * **Cross-Platform Compatibility:** Works seamlessly on various operating systems.
 
 
-## Installation & Execution
+## Installation
 1. With Docker (Recommended)
    1. Clone the repository:
       ```bash
