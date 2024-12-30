@@ -90,17 +90,17 @@ docker run morphurl --help # CLI Mode
 **Obfuscate:**
 
 ```bash
-python main.py --option 1 --ip_or_url http://example.com
-python main.py --option 1 --ip_or_url http://example.com -c 3 -out obfuscated.txt
-python main.py --option 1 -f input.txt -d domains.txt --output output.txt
+python main.py -op 1 -i http://example.com
+python main.py -op 1 -i http://example.com -c 3 -o obfuscated.txt
+python main.py -op 1 -f input_URLs.txt -d domains.txt -o output.txt
 ```
 
 **Deobfuscate:**
 
 ```bash
-python main.py --option 2 --ip_or_url 0x7f000001
-python main.py --option 2 --ip_or_url "http://example.com@192.168.0.1" --output deobfuscated.txt
-python main.py --option 2 -f obfuscated.txt --output deobfuscated_ips.txt
+python main.py -op 2 -i 0x7f000001
+python main.py -op 2 -i "http://example.com@192.168.0.1" -o deobfuscated.txt
+python main.py -op 2 -f obfuscated.txt -o deobfuscated_ips.txt
 ```
 
 ## Contributing
