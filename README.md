@@ -12,7 +12,7 @@ MorphURL is a versatile command-line tool designed for obfuscating and deobfusca
 * **Cross-Platform Compatibility:** Works seamlessly on various operating systems.
 
 > [!IMPORTANT]
-> Please include protocol (e.g. `http://`, `https://`) if you want to obfuscate URLs & IPs.**
+> **Please include protocol (e.g. `http://`, `https://`) if you want to obfuscate URLs & IPs.**
 
 
 ## Installation
