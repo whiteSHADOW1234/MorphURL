@@ -36,5 +36,4 @@ def encode_random_chars(url, num_chars=5):
         return urllib.parse.urlunsplit((scheme, new_netloc, new_path, new_query, new_fragment))
     except ValueError:
         print("Invalid URL provided: ", url)
-        # Stop the program if an invalid URL is provided
         exit()

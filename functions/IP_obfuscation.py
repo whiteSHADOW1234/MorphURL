@@ -1,5 +1,3 @@
-import random
-import string
 from functions.url_utils import insert_domain_after_protocol, encode_random_chars
 
 # IP obfuscation functions
@@ -167,10 +165,6 @@ def oct_hex_dec(ip_parts, n):
 def obfuscate_ip(ip, count=5):
     ip_parts = ip.split('.')
     obfuscated_ips = [
-                # hex_merge(ip_parts),
-        # hex_all(ip_parts),
-
-        # hex_full(ip_parts),
         hex_padded_n(ip_parts, 4),
         hex_padded_n(ip_parts, 3),
         hex_padded_n(ip_parts, 2),
@@ -179,7 +173,7 @@ def obfuscate_ip(ip, count=5):
         hex_n(ip_parts, 4),
         hex_n(ip_parts, 3),
         hex_n(ip_parts, 2),
-        hex_n(ip_parts, 1), # Duplicate hex_dec_n(ip_parts, 4),
+        # hex_n(ip_parts, 1), # Duplicate hex_dec_n(ip_parts, 4),
 
         hex_dec_n(ip_parts, 4),
         hex_dec_n(ip_parts, 3),
@@ -191,12 +185,9 @@ def obfuscate_ip(ip, count=5):
         hex_oct_n(ip_parts, 2), #
         hex_oct_n(ip_parts, 1), #
 
-        # hex_hex_n = hex_dec_n 4
-
-        # hex_dec(ip_parts),
         hex_dec_merge_n(ip_parts, 4), #
         hex_dec_merge_n(ip_parts, 3), #
-        hex_dec_merge_n(ip_parts, 2), # REPLACE hex_dec(ip_parts)
+        hex_dec_merge_n(ip_parts, 2), # Equal to hex_dec(ip_parts)
 
         # hex_hex_merge_n(ip_parts, 4), # Duplicate hex_dec_n(ip_parts, 4)
         hex_hex_merge_n(ip_parts, 3), #
@@ -219,11 +210,8 @@ def obfuscate_ip(ip, count=5):
         hex_dec_hex(ip_parts, 2), #
 
         hex_oct_hex(ip_parts, 1), #
-        hex_oct_hex(ip_parts, 2), #
+        hex_oct_hex(ip_parts, 2), # 
 
-# 31      
-
-        # str(decimal(ip_parts)),
         dec_hex_n(ip_parts, 3), #
         dec_hex_n(ip_parts, 2), #
         dec_hex_n(ip_parts, 1), #
@@ -232,7 +220,7 @@ def obfuscate_ip(ip, count=5):
         dec_oct_n(ip_parts, 2), #
         dec_oct_n(ip_parts, 1), #
 
-        dec_dec_merge_n(ip_parts, 1), # REPLACE decimal(ip_parts)
+        dec_dec_merge_n(ip_parts, 1), # Equal to decimal(ip_parts)
         dec_dec_merge_n(ip_parts, 2), #
         dec_dec_merge_n(ip_parts, 3), #
         # dec_dec_merge_n(ip_parts, 4), # Original IP address format
@@ -257,9 +245,6 @@ def obfuscate_ip(ip, count=5):
 
         dec_hex_oct(ip_parts, 1), #
         dec_hex_oct(ip_parts, 2), #
-
-
-# 53
 
         # long_dec(ip_parts),
         octal_padded_n(ip_parts, 4),
@@ -304,7 +289,6 @@ def obfuscate_ip(ip, count=5):
 
         oct_hex_dec(ip_parts,1),
         oct_hex_dec(ip_parts,2),
-# 83
     ]
     return obfuscated_ips[:count]
 

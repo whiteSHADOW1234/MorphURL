@@ -81,4 +81,4 @@ def deobfuscate_ip(ip_str):
 def deobfuscate_url(url):
     """Deobfuscates a URL by decoding and removing HTTP basic auth."""
     url = urllib.parse.unquote(url)  # Decode percent-encoded characters
-    return urllib.parse.urlsplit(url).netloc.split('@')[-1]  # Remove basic auth
+    return urllib.parse.urlsplit(url).netloc.split('@')[-1]  # Remove basic auth attack
