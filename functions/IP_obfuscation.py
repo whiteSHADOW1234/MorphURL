@@ -78,7 +78,9 @@ def dec_hex_n(ip_parts, n):
     return '.'.join([str(int(part)) for part in ip_parts[:n]] + [f"0x{int(part):X}" for part in ip_parts[n:]])
 
 def dec_oct_n(ip_parts, n):
-    return '.'.join([f"{int(part):04o}" for part in ip_parts[:n]] + ip_parts[n:])
+    decimal_parts = [str(int(part)) for part in ip_parts[:n]]  # Decimal, no leading zeros
+    octal_parts = [f"{int(part):03o}" for part in ip_parts[n:]]   # Octal with leading zeros (3 digits)
+    return '.'.join(decimal_parts + octal_parts)
 
 def dec_oct_dec(ip_parts, n):
     if n == 1:
@@ -111,7 +113,7 @@ def oct_hex_merge_n(ip_parts, n):
     return '.'.join(first) + '.' + f"0x{hex_num:X}"
 
 def oct_dec_n(ip_parts, n):
-    return '.'.join([f"{int(part):04o}" for part in ip_parts[:n]] + ip_parts[n:])
+    return '.'.join([f"{int(part):04o}" for part in ip_parts[:n]] + [str(int(part)) for part in ip_parts[n:]])
 
 def oct_n(ip_parts, n):
     return '.'.join([f"{int(part):04o}" if i == n - 1 else part for i, part in enumerate(ip_parts)])
@@ -170,35 +172,35 @@ def obfuscate_ip(ip, count=5):
         hex_padded_n(ip_parts, 2),
         hex_padded_n(ip_parts, 1),
 
-        hex_n(ip_parts, 4),
+        hex_n(ip_parts, 4), # Duplicate dec_hex_n(ip_parts, 3), [X]
         hex_n(ip_parts, 3),
         hex_n(ip_parts, 2),
-        # hex_n(ip_parts, 1), # Duplicate hex_dec_n(ip_parts, 4),
+        # hex_n(ip_parts, 1), # Duplicate hex_dec_n(ip_parts, 4), [X]
 
         hex_dec_n(ip_parts, 4),
-        hex_dec_n(ip_parts, 3),
+        hex_dec_n(ip_parts, 3), # Duplicate hex_dec_merge_n(ip_parts, 4), [X]
         hex_dec_n(ip_parts, 2),
         hex_dec_n(ip_parts, 1),
 
-        # hex_oct_n(ip_parts, 4), # Duplicate hex_dec_n(ip_parts, 4)
+        # hex_oct_n(ip_parts, 4), # Duplicate hex_dec_n(ip_parts, 4) [X]
         hex_oct_n(ip_parts, 3), #
         hex_oct_n(ip_parts, 2), #
         hex_oct_n(ip_parts, 1), #
 
-        hex_dec_merge_n(ip_parts, 4), #
+        # hex_dec_merge_n(ip_parts, 4), # Duplicated [X]
         hex_dec_merge_n(ip_parts, 3), #
-        hex_dec_merge_n(ip_parts, 2), # Equal to hex_dec(ip_parts)
+        hex_dec_merge_n(ip_parts, 2), # 
 
-        # hex_hex_merge_n(ip_parts, 4), # Duplicate hex_dec_n(ip_parts, 4)
+        # hex_hex_merge_n(ip_parts, 4), # Duplicate hex_dec_n(ip_parts, 4) [X]
         hex_hex_merge_n(ip_parts, 3), #
         hex_hex_merge_n(ip_parts, 2), #
-        hex_hex_merge_n(ip_parts, 1), # Duplicate hex_merge(ip_parts)
+        hex_hex_merge_n(ip_parts, 1), # 
 
 
-        # hex_oct_merge_n(ip_parts, 4), # Duplicate hex_oct_n(ip_parts, 1)
-        hex_oct_merge_n(ip_parts, 3), #
+        # hex_oct_merge_n(ip_parts, 4), # Duplicate hex_oct_n(ip_parts, 3)  [X]
+        hex_oct_merge_n(ip_parts, 3), # 
         hex_oct_merge_n(ip_parts, 2), #
-        # hex_oct_merge_n(ip_parts, 1), # Duplicate hex_oct_n(ip_parts, 1)
+        # hex_oct_merge_n(ip_parts, 1), # Duplicate oct_oct_merge_n(ip_parts, 1) [X]
 
         hex_oct_dec(ip_parts, 1), #
         hex_oct_dec(ip_parts, 2), #
@@ -212,25 +214,25 @@ def obfuscate_ip(ip, count=5):
         hex_oct_hex(ip_parts, 1), #
         hex_oct_hex(ip_parts, 2), # 
 
-        dec_hex_n(ip_parts, 3), #
+        # dec_hex_n(ip_parts, 3), # Duplicated [X]
         dec_hex_n(ip_parts, 2), #
         dec_hex_n(ip_parts, 1), #
 
-        dec_oct_n(ip_parts, 3), #
-        dec_oct_n(ip_parts, 2), #
-        dec_oct_n(ip_parts, 1), #
+        dec_oct_n(ip_parts, 3), # 
+        dec_oct_n(ip_parts, 2), # 
+        dec_oct_n(ip_parts, 1), # 
 
-        dec_dec_merge_n(ip_parts, 1), # Equal to decimal(ip_parts)
+        dec_dec_merge_n(ip_parts, 1), # 
         dec_dec_merge_n(ip_parts, 2), #
         dec_dec_merge_n(ip_parts, 3), #
-        # dec_dec_merge_n(ip_parts, 4), # Original IP address format
+        # dec_dec_merge_n(ip_parts, 4), # Original IP address format [X]
 
 
         dec_hex_merge_n(ip_parts, 3), #
         dec_hex_merge_n(ip_parts, 2), #
-        # dec_hex_merge_n(ip_parts, 1), # Duplicate hex_hex_merge_n(ip_parts, 1)
+        # dec_hex_merge_n(ip_parts, 1), # Duplicate hex_hex_merge_n(ip_parts, 1) [X]
 
-        dec_oct_merge_n(ip_parts, 3), #
+        dec_oct_merge_n(ip_parts, 3), # Duplicate oct_n(ip_parts, 4), [X]
         dec_oct_merge_n(ip_parts, 2), #
         dec_oct_merge_n(ip_parts, 1), #
 
@@ -252,15 +254,15 @@ def obfuscate_ip(ip, count=5):
         octal_padded_n(ip_parts, 2),
         octal_padded_n(ip_parts, 1),
 
-        oct_n(ip_parts, 4),
+        # oct_n(ip_parts, 4), # Duplicate [X]
         oct_n(ip_parts, 3),
         oct_n(ip_parts, 2),
-        oct_n(ip_parts, 1),
+        oct_n(ip_parts, 1), # Duplicate
 
         oct_dec_n(ip_parts, 4),
-        oct_dec_n(ip_parts, 3),
-        oct_dec_n(ip_parts, 2),
-        oct_dec_n(ip_parts, 1),
+        oct_dec_n(ip_parts, 3), 
+        oct_dec_n(ip_parts, 2), 
+        oct_dec_n(ip_parts, 1), 
 
         oct_hex_n(ip_parts, 3),
         oct_hex_n(ip_parts, 2),
@@ -268,11 +270,11 @@ def obfuscate_ip(ip, count=5):
 
         oct_hex_merge_n(ip_parts, 3),
         oct_hex_merge_n(ip_parts, 2),
-        # oct_hex_merge_n(ip_parts, 1),# Duplicate hex_hex_merge_n(ip_parts, 1)
+        # oct_hex_merge_n(ip_parts, 1),# Duplicate hex_hex_merge_n(ip_parts, 1) [X]
 
         oct_dec_merge_n(ip_parts, 3),
         oct_dec_merge_n(ip_parts, 2),
-        # oct_dec_merge_n(ip_parts, 1), # Duplicate dec_dec_merge_n(ip_parts, 1)
+        # oct_dec_merge_n(ip_parts, 1), # Duplicate dec_dec_merge_n(ip_parts, 1) [X]
         
         oct_oct_merge_n(ip_parts, 3),
         oct_oct_merge_n(ip_parts, 2),
